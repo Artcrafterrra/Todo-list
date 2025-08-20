@@ -2,6 +2,7 @@ from django.shortcuts import render, get_object_or_404, redirect
 from django.urls import reverse_lazy
 from django.views import generic
 from todo.models import Task, Tag
+from todo.forms import TaskCreateForm, TaskUpdateForm
 
 
 class TaskListView(generic.ListView):
@@ -12,14 +13,14 @@ class TaskListView(generic.ListView):
 
 class TaskCreateView(generic.CreateView):
     model = Task
-    fields = ["content", "deadline", "tags"]
+    form_class = TaskCreateForm
     template_name = "todo/task_form.html"
     success_url = reverse_lazy("todo:task-list")
 
 
 class TaskUpdateView(generic.UpdateView):
     model = Task
-    fields = ["content", "deadline", "tags", "is_done"]
+    form_class = TaskUpdateForm
     template_name = "todo/task_form.html"
     success_url = reverse_lazy("todo:task-list")
 
