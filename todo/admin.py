@@ -8,7 +8,7 @@ class TaskAdmin(admin.ModelAdmin):
     list_display = ("content", "is_done", "created", "deadline")
     list_filter = ("is_done", "created", "tags")
     search_fields = ("content",)
-    filter_horizontal = ("tags",)  # зручний віджет для вибору багатьох тегів
+    filter_horizontal = ("tags",)
 
 
 @admin.register(Tag)
